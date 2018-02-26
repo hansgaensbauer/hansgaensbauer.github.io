@@ -1,9 +1,33 @@
 /*The stylesheet for index.html*/
 
+.smalltitle{
+  font-size:1.5vw;
+}
+
+#details{
+  width:15vw;
+  position:absolute;
+  top:46vw;
+  left:42vw;
+}
+
+#support{
+  background-color:#09224c;
+}
+
+#support p{
+  color:white;
+}
+
+.head{
+  text-align:center;
+  color:white;
+}
+
 .attribution{
   position:absolute;
   background-color:white;
-  top:32vw;
+  top:31vw;
   right:0vw;
   padding:0.5vw;
   border: 3px solid black;
@@ -24,8 +48,8 @@
 #secheader{
   color:#09224c;
   text-align:center;
-  margin:20px;
-  font-size:5vw;
+  margin:10px;
+  font-size:4vw;
 }
 
 #eastlogo{
@@ -35,16 +59,19 @@
 }
 
 #stats{
-  width:35vw;
+  width:40vw;
   margin:20px;
+  margin-top:0px;
+  margin-bottom:0px;
   padding-top:5px;
   vertical-align:top;
 }
 
 #diagram{
-  height:100em;
+  height:90em;
   padding-left: 15%;
   padding-right: auto;
+  border: 3px solid #09224c;
 }
 
 img{
@@ -77,12 +104,13 @@ p{
 .image-container {
     text-align: center;
     padding:0vw;
+    margin:0vw;
 }
 
 .image {
   display: inline-block;
   align-content: space-around;
-  width:63vw
+  width:75vw
   padding:0vw;
 }
 
@@ -90,9 +118,11 @@ p{
   width:35vw;
   margin:2vw;
   background-color:#09224c;
-  height:70vw;
+  height:75vw;
   display:inline-block;
   vertical-align:top;
+  margin-top:0px;
+  margin-bottom:0px;
 }
 
 #counter{
