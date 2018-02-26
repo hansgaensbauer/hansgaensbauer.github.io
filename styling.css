@@ -1,0 +1,249 @@
+/*The stylesheet for index.html*/
+
+.attribution{
+  position:absolute;
+  background-color:white;
+  top:32vw;
+  right:0vw;
+  padding:0.5vw;
+  border: 3px solid black;
+  border-right:0px;
+}
+
+#stathead{
+  font-size:3vw;
+  color:white;
+}
+
+#BalloonStats{
+  list-style-type: none;
+  font-size:2vw;
+  color:white;
+}
+
+#secheader{
+  color:#09224c;
+  text-align:center;
+  margin:20px;
+  font-size:5vw;
+}
+
+#eastlogo{
+  background-color:white;
+  padding:2px;
+  padding-right:5px;
+}
+
+#stats{
+  width:35vw;
+  margin:20px;
+  padding-top:5px;
+  vertical-align:top;
+}
+
+#diagram{
+  height:100em;
+  padding-left: 15%;
+  padding-right: auto;
+}
+
+img{
+  padding: 0px;
+  margin:0px;
+  border-color:green;
+  border-width:6px;
+}
+
+p{
+  font-family: verdana;
+}
+
+#dhms{
+  position: absolute;
+  top: 18.5vw;
+  left:0vw;
+  font-size: 4vw;
+  color: black;
+  width: 100vw;
+  text-align: center;
+  transform: scale(1, 0.5);
+  -webkit-transform: scale(1, 0.5); /* Safari and Chrome */
+  -moz-transform: scale(1, 0.5); /* Firefox */
+  -ms-transform: scale(1, 0.5); /* IE 9+ */
+  -o-transform: scale(1, 0.5); /* Opera */
+  word-spacing:3vw;
+}
+
+.image-container {
+    text-align: center;
+    padding:0vw;
+}
+
+.image {
+  display: inline-block;
+  align-content: space-around;
+  width:63vw
+  padding:0vw;
+}
+
+.stats-container {
+  width:35vw;
+  margin:2vw;
+  background-color:#09224c;
+  height:70vw;
+  display:inline-block;
+  vertical-align:top;
+}
+
+#counter{
+  position: absolute;
+  top: 5vw;
+  left:0vw;
+  font-size: 9vw;
+  color: black;
+  width: 100vw;
+  text-align: center;
+}
+
+#caption{
+  position: absolute;
+  top: 22vw;
+  left:12.5vw;
+  font-size: 5vw;
+  color: black;
+  width: 75vw;
+  text-align: center;
+  transform: scale(1, 0.5);
+  -webkit-transform: scale(1, 0.5); /* Safari and Chrome */
+  -moz-transform: scale(1, 0.5); /* Firefox */
+  -ms-transform: scale(1, 0.5); /* IE 9+ */
+  -o-transform: scale(1, 0.5); /* Opera */
+  letter-spacing: 1.5vw;
+}
+
+#menu{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  right: 0%;
+}
+
+.column{
+  text-align:left;
+  padding-left: 6vw;
+  padding-right: 3vw;
+  padding-top: 2vw;
+  margin-top:0;
+  vertical-align: top;
+  width:30%;
+}
+
+.column p{
+  align:center;
+}
+
+.column img{
+  display:block;
+  margin:auto;
+}
+
+.hiddenlink{
+  text-decoration: none;
+  color: white;
+  transform: scale(1, 0.5);
+  -webkit-transform: scale(1, 0.75); /* Safari and Chrome */
+  -moz-transform: scale(1, 0.75); /* Firefox */
+  -ms-transform: scale(1, 0.75); /* IE 9+ */
+  -o-transform: scale(1, 0.75); /* Opera */
+}
+
+.hiddenlink h1{
+  transform: scale(1, 0.75);
+  -webkit-transform: scale(1, 0.75); /* Safari and Chrome */
+  -moz-transform: scale(1, 0.75); /* Firefox */
+  -ms-transform: scale(1, 0.75); /* IE 9+ */
+  -o-transform: scale(1, 0.75); /* Opera */
+  letter-spacing:.5vw;
+}
+
+.bigimage{
+  padding-top: 30px;
+  z-index:1;
+  height: 30vw;
+}
+
+#headerbar{
+  margin-top: 0px;
+  margin-bottom: 0px;
+  width: 100%;
+  background-color: #09224c;
+  padding: 0px;
+  position:relative;
+  top:0px;
+  border:2px;
+}
+
+.menuitem {
+  list-style-type: none;
+  float: left;
+  display: block;
+  text-align:center;
+  padding: 0px 15px;
+  text-decoration: none;
+  color: white;
+  font-size: 16pt;
+}
+
+#menu{
+  display:table;
+margin: 0 auto;
+align-self:center;
+vertical-align: 150%;
+}
+
+.menuitem:hover {
+  background-color: #3567ba;
+}
+
+h2 {
+  text-align: center;
+  font-family:verdana;
+}
+
+h3 {
+  position: relative;
+  left: 25%
+}
+
+.footer{
+  background-color: #ffeded;
+  margin-bottom: 0px;
+}
+
+.list {
+  position: relative;
+  left: 25%
+}
+
+#foot {
+  font-size: 9pt;
+  position: relative;
+  left: 25%;
+}
+
+#content{
+  background-color: #Eff5ff
+}
+
+h1 {
+  padding: 0px;
+  margin:0px;
+  font-family:verdana;
+}
+
+body {
+  border: 0px;
+  padding: 0px;
+  margin: 0px;
+}
