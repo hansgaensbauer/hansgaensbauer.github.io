@@ -1,293 +1,159 @@
-/*The stylesheet for index.html*/
+/* stylesheet for hgaens.info*/
 
-.update{
-  color:white;
-  padding-left:1vw;
-  padding-top:1vw;
+#recentposts{
+  position:relative;
+  left:25vw;
+  padding:0vw 2vw;
 }
 
-.update a{
-  color:white;
-}
-
-.update h2{
-  text-align:left;
-}
-
-.smalltitle{
-  font-size:1.5vw;
-}
-
-#details{
-  width:15vw;
+#clicktostop{
   position:absolute;
-  top:46vw;
-  left:42vw;
-}
-
-.support{
-  background-color:#09224c;
-}
-
-.support p{
-  color:white;
-}
-
-.head{
-  text-align:center;
-  color:white;
-}
-
-.attribution{
-  position:absolute;
-  background-color:white;
-  top:31vw;
+  font-size:16pt;
+  top:18.5vw;
   right:0vw;
-  padding:0.5vw;
-  border: 3px solid black;
-  border-right:0px;
+  width:8vw;
 }
 
-#stathead{
-  font-size:3vw;
-  color:white;
+.ipost{
+  width:50vw;
+  position:relative;
+  left:25vw;
+  background-color:#f7faff;
+  padding:0vw 2vw;
 }
 
-#BalloonStats{
-  list-style-type: none;
-  font-size:2vw;
-  color:white;
+.ipost p{
+  font-size:14pt;
 }
 
-#secheader{
-  color:#09224c;
+.ipost img{
+  display:block;
+  width:30vw;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:1vw;
+  margin-bottom:1vw;
+}
+
+.post img{
+  display:block;
+  width:30vw;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:1vw;
+  margin-bottom:1vw;
+}
+
+.content p{
+  font-size: 14pt;
+}
+
+.content ol{
+  font-size: 14pt;
+}
+
+.contentslist li {
+  color:black;
+  text-decoration:underline;
+}
+
+.allimage{
+  margin-top:5vw;
+  width:100%;
+  height:17vw;
+}
+
+#contentsdiv{
+  position:absolute;
+  top:23vw;
+  left:15vw;
+  background-color:#d1d3d6;
+  padding:1vw;
+  width:12vw;
+}
+
+.icontent{
+  width:50vw;
+  position:relative;
+  left:25vw;
+  background-color:#f7faff;
+  padding:0vw 2vw;
+}
+
+.icontent p{
+  font-size:16pt;
+}
+
+.content{
+  width:50vw;
+  position:relative;
+  left:30vw;
+  background-color:#f7faff;
+  padding:0vw 2vw;
+}
+
+#menulist{
   text-align:center;
-  margin:10px;
-  font-size:4vw;
+  display:table;
+  position:relative;
+  overflow:hidden;
+  width:60vw;
+  margin-right:5vw
 }
 
-#eastlogo{
-  background-color:white;
-  padding:2px;
-  padding-right:5px;
+#myCanvas{
+  width:auto;
+  margin-top:5vw;
+  border: 1px solid black;
+  padding:0px;
 }
 
-#stats{
-  width:40vw;
-  margin:20px;
-  margin-top:0px;
-  margin-bottom:0px;
-  padding-top:5px;
-  vertical-align:top;
+.menuitem{
+  display:block;
+  list-style-type:none;
+  float:right;
+  padding:0vw 2vw;
+  font-size:16pt;
+  width:80px;
+  border-right:1px solid white;
+  text-align:center;
 }
 
-#diagram{
-  height:90vw;
-  padding-right: auto;
-  padding-left:1vw;
-  border: 3px solid #09224c;
-}
-
-img{
-  padding: 0px;
-  margin:0px;
-  border-color:green;
-  border-width:6px;
-}
-
-p{
-  font-family: verdana;
-}
-
-#dhms{
-  position: absolute;
-  top: 18.5vw;
-  left:0vw;
-  font-size: 4vw;
-  color: black;
-  width: 100vw;
-  text-align: center;
-  transform: scale(1, 0.5);
-  -webkit-transform: scale(1, 0.5); /* Safari and Chrome */
-  -moz-transform: scale(1, 0.5); /* Firefox */
-  -ms-transform: scale(1, 0.5); /* IE 9+ */
-  -o-transform: scale(1, 0.5); /* Opera */
-  word-spacing:3vw;
-}
-
-.image-container {
-    text-align: center;
-    padding:0vw;
-    margin:0vw;
-}
-
-.image {
-  display: inline-block;
-  align-content: space-around;
-  width:75vw
-  padding:0vw;
-}
-
-.stats-container {
-  width:35vw;
-  margin:2vw;
-  background-color:#09224c;
-  height:90vw;
-  display:inline-block;
-  vertical-align:top;
-  margin-top:0px;
-  margin-bottom:0px;
-}
-
-#counter{
-  position: absolute;
-  top: 5vw;
-  left:0vw;
-  font-size: 9vw;
-  color: black;
-  width: 100vw;
-  text-align: center;
-}
-
-#caption{
-  position: absolute;
-  top: 22vw;
-  left:12.5vw;
-  font-size: 5vw;
-  color: black;
-  width: 75vw;
-  text-align: center;
-  transform: scale(1, 0.5);
-  -webkit-transform: scale(1, 0.5); /* Safari and Chrome */
-  -moz-transform: scale(1, 0.5); /* Firefox */
-  -ms-transform: scale(1, 0.5); /* IE 9+ */
-  -o-transform: scale(1, 0.5); /* Opera */
-  letter-spacing: 1.5vw;
+.menuitem a{
+  color:#92b6ef;
+  text-decoration:none;
 }
 
 #menu{
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  position: relative;
-  right: 0%;
-}
-
-.column{
-  text-align:left;
-  padding-left: 6vw;
-  padding-right: 3vw;
-  padding-top: 2vw;
-  margin-top:0;
-  vertical-align: top;
-  width:30%;
-}
-
-.column p{
-  align:center;
-}
-
-.column img{
+  z-index:2;
+  position:fixed;
   display:block;
-  margin:auto;
+  margin-top:0vw;
+  margin-left:0vw;
+  background-color:black;
+  padding:0vw;
+  width:100%;
 }
 
 .hiddenlink{
-  text-decoration: none;
-  color: white;
-  transform: scale(1, 0.5);
-  -webkit-transform: scale(1, 0.75); /* Safari and Chrome */
-  -moz-transform: scale(1, 0.75); /* Firefox */
-  -ms-transform: scale(1, 0.75); /* IE 9+ */
-  -o-transform: scale(1, 0.75); /* Opera */
+  text-decoration:none;
+  color:#92b6ef;
 }
 
 .hiddenlink h1{
-  transform: scale(1, 0.75);
-  -webkit-transform: scale(1, 0.75); /* Safari and Chrome */
-  -moz-transform: scale(1, 0.75); /* Firefox */
-  -ms-transform: scale(1, 0.75); /* IE 9+ */
-  -o-transform: scale(1, 0.75); /* Opera */
-  letter-spacing:.5vw;
+  padding:0vw;
+  margin:0.5vw;
 }
 
-.bigimage{
-  padding-top: 30px;
-  z-index:1;
-  height: 30vw;
-}
-
-#headerbar{
-  margin-top: 0px;
-  margin-bottom: 0px;
-  width: 100%;
-  background-color: #09224c;
-  padding: 0px;
-  position:relative;
-  top:0px;
-  border:2px;
-}
-
-.menuitem {
-  list-style-type: none;
-  float: left;
-  display: block;
-  text-align:center;
-  padding: 0px 15px;
-  text-decoration: none;
-  color: white;
-  font-size: 16pt;
-}
-
-#menu{
-display:table;
-margin: 0 auto;
-align-self:center;
-vertical-align: 150%;
-}
-
-.menuitem:hover {
+li .menuitem:hover {
   background-color: #3567ba;
 }
 
-h2 {
-  text-align: center;
-  font-family:verdana;
+#test{
+  width:100%
 }
 
-h3 {
-  position: relative;
-  left: 25%
-}
-
-.footer{
-  background-color: #ffeded;
-  margin-bottom: 0px;
-}
-
-.list {
-  position: relative;
-  left: 25%
-}
-
-#foot {
-  font-size: 9pt;
-  position: relative;
-  left: 25%;
-}
-
-#content{
-  background-color: #Eff5ff
-}
-
-h1 {
-  padding: 0px;
-  margin:0px;
-  font-family:verdana;
-}
-
-body {
-  border: 0px;
-  padding: 0px;
-  margin: 0px;
+body{
+  margin:0vw;
+  padding:0vw;
 }

@@ -1,104 +1,55 @@
 <!DOCTYPE html>
-
 <html>
 <head>
-  <title>Project HAALO | East High School</title>
-  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <title>Hans Gaensbauer</title>
+  <link rel="icon" href="favicon.png" type="image/gif" sizes="16x16">
   <link rel="stylesheet" type="text/css" href="styling.css" />
-  <script type="text/javascript"src="script.js"></script>
+  <script style = "text/javascript" src = "index.js"></script>
 </head>
-<body>
-  <table id="headerbar">
+<body onload = "loaded()">
+  <table id="menu">
+  <td id="test">
+    <a href="index.html" class = "hiddenlink"><h1>Hans Gaensbauer</h1></a>
   <td>
-    <img src="eastlogo.png" alt="East High School Logo" height="50" width="100" id="eastlogo">
-  </td>
-  <td>
-    <a href="index.html" class = "hiddenlink"><h1>East Angels: Project HAALO</h1></a>
-  <td>
-    <ul id="menu">
-      <li class = "menuitem"><a href="index.html"  class = "menuitem">Home</a></li>
-      <li class = "menuitem"><a href="#support"  class = "menuitem">Support the Project</a></li>
-      <li class = "menuitem"><a href="mailto:htgaens@gmail.com"  class = "menuitem">Contact Us</a></li>
+    <ul id="menulist">
+      <li class = "menuitem"><a href="politics.html">Politics</a></li>
+      <li class = "menuitem"><a href="Projects.html">Projects</a></li>
+      <li class = "menuitem"><a href="index.html">About</a></li>
     </ul>
   </td>
   </table>
-  <img class="bigimage" src="LargePicture.jpg" alt="High Altitude Balloon view of the earth. Taken by Justin Hamel and Chris Thompson" width="100%"/>
-  <p id="counter">
-
-  </p>
-  <p id="dhms">
-    days&nbsp;&nbsp; hours &nbsp;minutes seconds
-  </p>
-  <p id="caption">
-    <b>Until Launch</b>
-  </p>
-  <p class="attribution">
-    <b>Justin Hamel & Chris Thompson</b>
-  </p>
-  <h1 id="secheader">The Balloon</h1>
-  <table>
-    <td id="stats">
-      <div class="stats-container">
-        <h2 id="stathead">Updates</h2>
-        <div class="update">
-           <h2>2-26-17</h2>
-           <p>
-             The electronics board was been fitted with through-hole rivets, and
-             is ready for soldering.
-           </p>
-        </div>
-        <div class="update">
-           <h2>2-23-17</h2>
-           <p>
-             All vias have been added to the electronics board
-           </p>
-        </div>
-        <div class="update">
-           <h2>2-18-17</h2>
-           <p>
-             All electronics parts have arrived! Assembly can begin shortly.
-           </p>
-        </div>
-        <div class="update">
-           <h2>2-13-17</h2>
-           <p>
-             All parts have been ordered and are on their way!
-           </p>
-        </div>
-        <div class="update">
-           <h2>1-23-17</h2>
-           <p>
-             Funding for the project has been granted by the school administrators.
-             To view the funding presentation (which has information on the project
-             in general), click <a href="https://docs.google.com/presentation/d/1_7kJ-lWgucYSt0bqoq6dWukHkkzN9XvCBo-I-2IiVrA/edit?usp=sharing">here</a>.
-           </p>
-        </div>
-      </div>
-    </td>
-    <td>
-      <div class="image-container">
-        <div class="image">
-          <img id="diagram" src="WebBalloon.svg"/>
-        </div>
-      </div>
-    </td>
-  </table>
-  <div id="details">
-    <h3 class="smalltitle">The HAALO Balloon</h3>
-    <p class="info">
-      After months of design and prototyping, East High School Engineering
-      brings you HAALO: the High Altitude Atmosphere and Land Observatory. With a
-      target altitude of 100,000ft, where temperatures sink below -51.1 degrees
-      Fahrenheit, every aspect of this balloon has been built for durability and
-      resilience.
-    </p>
-  </div>
-  <div class="support">
-    <a name="support"></a>
-    <h1 class="head">Support the Project</h1>
+  <canvas id="myCanvas" onclick ="end(event)"></canvas>
+  <p id="clicktostop" onclick ="end(event)">click to stop</p>
+  <div class = "icontent">
+    <h1>Hans Gaensbauer - A Portfolio</h1>
     <p>
-      where is the freaking paragraph?
+      If you're reading this, you spelled my name right! Here, I've outlined all
+      of the most interesting or important projects I've done in the last year.
     </p>
+    </div>
+    <h2 id="recentposts">Recent Posts</h2>
+    <div class="ipost">
+      <h3>High Altitude Balloon: New Design <br />
+        3-9-18
+        </h3>
+      <p>
+        I have redesigned the PCB for the balloon!
+
+        <img src="newcircuit.jpg" alt="the new circuit for the high altitude balloon" />
+
+        We did not remove the ADC, instead, we will redesign the breakouts for
+        the MQ sensors using protoboard. We added a JST connector for the PM 2.5
+        sensor, and widened the distance between the pads and the polygon pour.
+        <br />
+        <br />
+        The other important change is the addition of a GSM module from DIYmall.
+        This will allow the balloon to communicate with SMS while it is at low
+        altitude without having to wait for Iridium's servers. More importantly,
+        the GSM module has a much higher communication speed, so we can pull
+        pictures from the Raspberry Pi on the way down. If we lose the balloon,
+        we will still be able to collect all of its data.
+      </p>
+    </div>
   </div>
 </body>
 </html>
