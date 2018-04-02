@@ -27,6 +27,7 @@
       <li onclick="linkt('style')">How To Style this Page</li>
       <li onclick="linkt('obvious')">A Quick Note on Grammar</li>
       <li onclick="linkt('mindcraft')">Mindcraft Server</li>
+      <li onclick="linkt('kandao')">kandao (看到)</li>
     </ul>
   </div>
   <img class = "allimage" src="Code.JPG" alt="a screenshot of some of the code for the mindcraft server" />
@@ -270,64 +271,71 @@ counter(10)</code>
       </div>
       <div class="codediv">
         <pre><code class="language-javascript">var today = new Date();
-        var ndate = today.getDate();
-        var weeksahead = 0;
+  var ndate = today.getDate();
+  var weeksahead = 0;
 
-        var month = new Array();
-        month[0] = "January";
-        month[1] = "February";
-        month[2] = "March";
-        month[3] = "April";
-        month[4] = "May";
-        month[5] = "June";
-        month[6] = "July";
-        month[7] = "August";
-        month[8] = "September";
-        month[9] = "October";
-        month[10] = "November";
-        month[11] = "December";
+  var month = new Array();
+  month[0] = "January";
+  month[1] = "February";
+  month[2] = "March";
+  month[3] = "April";
+  month[4] = "May";
+  month[5] = "June";
+  month[6] = "July";
+  month[7] = "August";
+  month[8] = "September";
+  month[9] = "October";
+  month[10] = "November";
+  month[11] = "December";
 
-        function adday(tod, num){
-          tod.setDate(tod.getDate() + num);
-          return(tod);
-        }
+  function adday(tod, num){
+    tod.setDate(tod.getDate() + num);
+    return(tod);
+  }
 
-        function refresh(sunday){
-          document.getElementById("sunday").innerHTML = ("<td>Sunday, " + month[sunday.getMonth()] + " " + sunday.getDate() + "</td>");
-          var day = adday(sunday, 1)
-          document.getElementById("monday").innerHTML = ("<td>Monday, " + month[day.getMonth()] + " " + day.getDate() + "</td>");
-          var day = adday(sunday, 1)
-          document.getElementById("tuesday").innerHTML = ("<td>Tuesday, " + month[day.getMonth()] + " " + day.getDate() + "</td>");
-          var day = adday(sunday, 1)
-          document.getElementById("wednesday").innerHTML = ("<td>Wednesday, " + month[day.getMonth()] + " " + day.getDate() + "</td>");
-          var day = adday(sunday, 1)
-          document.getElementById("thursday").innerHTML = ("<td>Thursday, " + month[day.getMonth()] + " " + day.getDate() + "</td>");
-          var day = adday(sunday, 1)
-          document.getElementById("friday").innerHTML = ("<td>Friday, " + month[day.getMonth()] + " " + day.getDate() + "</td>");
-          var day = adday(sunday, 1)
-          document.getElementById("saturday").innerHTML = ("<td>Saturday, " + month[day.getMonth()] + " " + day.getDate() + "</td>");
-          }
+  function refresh(sunday){
+    document.getElementById("sunday").innerHTML =
+    ("<td>Sunday, " + month[sunday.getMonth()] + " " + sunday.getDate() + "</td>");
+    var day = adday(sunday, 1)
+    document.getElementById("monday").innerHTML =
+    ("<td>Monday, " + month[day.getMonth()] + " " + day.getDate() + "</td>");
+    var day = adday(sunday, 1)
+    document.getElementById("tuesday").innerHTML =
+    ("<td>Tuesday, " + month[day.getMonth()] + " " + day.getDate() + "</td>");
+    var day = adday(sunday, 1)
+    document.getElementById("wednesday").innerHTML =
+    ("<td>Wednesday, " + month[day.getMonth()] + " " + day.getDate() + "</td>");
+    var day = adday(sunday, 1)
+    document.getElementById("thursday").innerHTML =
+    ("<td>Thursday, " + month[day.getMonth()] + " " + day.getDate() + "</td>");
+    var day = adday(sunday, 1)
+    document.getElementById("friday").innerHTML =
+    ("<td>Friday, " + month[day.getMonth()] + " " + day.getDate() + "</td>");
+    var day = adday(sunday, 1)
+    document.getElementById("saturday").innerHTML =
+    ("<td>Saturday, " + month[day.getMonth()] + " " + day.getDate() + "</td>");
+    }
 
-          function nextweek(){
-            weeksahead++;
-            var adate = new Date();
-            adate.setDate(adate.getDate() + (7 * weeksahead));
-            refresh(adate);
-          }
+    function nextweek(){
+      weeksahead++;
+      var adate = new Date();
+      adate.setDate(adate.getDate() + (7 * weeksahead));
+      refresh(adate);
+    }
 
-          function prevweek(){
-            weeksahead--;
-            var adate = new Date();
-            adate.setDate(adate.getDate() + (7 * weeksahead));
-            refresh(adate);
-          }
+    function prevweek(){
+      weeksahead--;
+      var adate = new Date();
+      adate.setDate(adate.getDate() + (7 * weeksahead));
+      refresh(adate);
+    }
 
-        window.onload = function(){
-          refresh(today);
+  window.onload = function(){
+    refresh(today);
 
-          document.getElementById("nextweek").addEventListener("click",nextweek);
-          document.getElementById("prevweek").addEventListener("click",prevweek);
-        }
+    document.getElementById("nextweek").addEventListener("click",nextweek);
+    document.getElementById("prevweek").addEventListener("click",prevweek);
+  }
         </code>
 </pre>
       </div>
@@ -492,6 +500,272 @@ counter(10)</code>
         the project, my boss decided that it was too complicated and the servers
         were scrapped, however, I will certainly be using what I have learned to
         develop better distributed systems.
+      </p>
+    </div>
+    <div id="kandao" class = "post">
+      <h2>kandao (看到)</h2>
+      <p>
+        This is my first practical programming task. In my Chinese class, we use
+        a wonderufl website called <a href="http://www.wlangames.net/Chang3.php?Student=Special%20Guest">
+        World Language Games</a>. Every week, we have to earn a certain number of points
+        for homework, but those of us who wanted to learn to write the characters by
+        hand (it does seem strange that that wasn't required in the first place) found
+        ourselves doing twice as much, because there was no way to practice handwriting
+        on World Language Games.
+        <br />
+        <br />
+        So I set about making 看到 (Pinyin:kàn'dào, English: See and Understand), which I
+        planned to send to the creator of World Language Games in the hopes that he
+        would integrate it with his website. This project was started before I knew
+        anything about Javascript, so it was a good 5 months before I felt confident
+        enough to really begin working on it.
+        <br />
+        <br />
+        World Language Games is written in PHP, which made perfect integration impossible
+        because it is invisible to the client, but I figured that I could make it
+        as compatible as possible by keeping all important data in global variables
+        written at the very beginning of the page.
+        <br />
+        <br />
+        My first attempt was at brute force: by overlaying two HTML canvases, I could
+        print the desired character on one and have the user write on the other, then
+        find the percentage of matching pixels. Here is that implementation:
+      </p>
+
+<div class="codediv">
+  <pre><code class="language-HTML">&lt;!DOCTYPE html&gt;
+&lt;html &gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Character Writing&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body style="background-color:#fff9bdff;"&gt;
+    &lt;table width="100%" style="border: 1px solid black; text-align:center;"&gt;
+      &lt;tr&gt;
+        &lt;td&gt;
+          &lt;h1&gt;Character Writing (Online)&lt;/h1&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;
+          &lt;p&gt;kàn'dào (to see and understand)&lt;/p&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;
+          &lt;div id="check"&gt;View Character&lt;/div&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/table&gt;
+    &lt;div id="paint"&gt;
+      &lt;canvas id="myCanvas"&gt;&lt;/canvas&gt;
+    &lt;/div&gt;
+    &lt;div id="reference"&gt;
+      &lt;canvas id="refcanvas"&gt;&lt;/canvas&gt;
+    &lt;/div&gt;
+    &lt;img id="background" src="background.png" alt="stroke order background" /&gt;
+    &lt;div class="scriptdiv"&gt;
+      &lt;script&gt;
+      var back = document.getElementById("background");
+      back.style.positon = "absolute";
+      back.height = back.width =  window.innerHeight/1.7;
+      back.style.top = (document.getElementById("myCanvas").offsetTop) + "px";
+      back.style.left = ((window.innerWidth - (window.innerHeight/1.7))/2) + "px";
+      &lt;/script&gt;
+    &lt;/div&gt;
+    &lt;table width="100%" style="border: 1px solid black; text-align:center;"&gt;
+      &lt;tr&gt;
+        &lt;td&gt;
+          &lt;div id="clear"&gt;Clear Drawing&lt;/div&gt;
+          &lt;div id="evaluate" onclick="countempixls()"&gt;Evaluate&lt;/div&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/table&gt;
+  &lt;/body&gt;
+  &lt;div class="stylediv"&gt;
+    &lt;style&gt;
+    .stylediv, .scriptdiv{
+      display:none;
+    }
+    #refcanvas{
+      position:absolute;
+      display:none;
+    }
+    #background{
+      position:absolute;
+      z-index:-1;
+    }
+    &lt;/style&gt;
+  &lt;/div&gt;
+  &lt;div class="scriptdiv"&gt;
+    &lt;script&gt;
+    function countempixls(){
+      console.log("evaluating");
+      var refim = document.getElementById("refcanvas").getContext("2d").getImageData(0,0,window.innerWidth,(window.innerHeight/1.7));
+      var subim = document.getElementById("myCanvas").getContext("2d").getImageData(0,0,window.innerWidth,(window.innerHeight/1.7));
+      var matchcount = 1;
+      var misscount = 1;
+      for(i = 0; i&lt;=refim.data.length; i++){
+        if(refim.data[i] == subim.data[i]){
+          matchcount++;
+        }
+        else{
+          misscount++;
+        }
+      }
+      console.log(matchcount);
+      console.log(misscount);
+      alert((matchcount/misscount) + " percent accuracy");
+      console.log(matchcount/misscount);
+    }
+    &lt;/script&gt;
+    &lt;script&gt;
+    var ref = document.getElementById("refcanvas");
+    ref.style.top = document.getElementById("myCanvas").offsetTop + "px";
+    var toggle = function(){
+      if(ref.style.display == "none"){
+        ref.style.display = "block";
+      }
+      else{
+        ref.style.display = "none";
+      }
+    }
+    document.getElementById("check").addEventListener("click", toggle);
+    &lt;/script&gt;
+    &lt;script&gt;
+    window.onload = function(){
+      var pcanv = document.getElementById("myCanvas");
+      var rcanv = document.getElementById("refcanvas");
+      var ctd = pcanv.getContext("2d");
+      var ctx = rcanv.getContext("2d");
+      pcanv.width = rcanv.width = window.innerWidth;
+      pcanv.height = rcanv.height = (window.innerHeight/1.7)
+      ctx.font = (window.innerHeight/1.8) + "px Verdana";
+      ctx.textAlign="center";
+      var hormid = window.innerWidth/2;
+      var vertmid = document.getElementById("myCanvas").height/1.2;
+      ctx.fillText("好", hormid, vertmid);
+    }
+    &lt;/script&gt;
+    &lt;script&gt;
+    var dcanvas = document.getElementById('myCanvas');
+    var clear = document.getElementById('clear');
+    var image = document.getElementById('image');
+    var dtx = dcanvas.getContext('2d');
+    var painting = document.getElementById('paint');
+    var paint_style = getComputedStyle(painting);
+    var mouse = {x: 0, y: 0};
+    dcanvas.addEventListener('mousemove', function(e) {
+      mouse.x = e.pageX - this.offsetLeft;
+      mouse.y = e.pageY - this.offsetTop;
+    }, false);
+    dcanvas.addEventListener('mousedown', function(e) {
+        dtx.beginPath();
+        dtx.moveTo(mouse.x, mouse.y);
+        dcanvas.addEventListener('mousemove', onPaint, false);
+    }, false);
+    dcanvas.addEventListener('mouseup', function() {
+        dcanvas.removeEventListener('mousemove', onPaint, false);
+    }, false);
+    clear.addEventListener('mouseup', function() {
+      dtx.clearRect(0, 0, dcanvas.width, dcanvas.height);
+    });
+    function drawingCallback(data) {
+      console.log(data)
+    }
+    function httpGet(theUrl, data, callback) {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function() {
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+                callback(xmlHttp.responseText);
+        }
+        xmlHttp.open("GET", theUrl + "?" + data, true); // true for asynchronous
+        xmlHttp.send(null);
+    }
+    var onPaint = function() {
+        dtx.lineWidth = 15;
+        dtx.lineJoin = 'round';
+        dtx.lineCap = 'round';
+        dtx.strokeStyle = '#000000';
+        dtx.lineTo(mouse.x, mouse.y);
+        dtx.stroke();
+    }
+  &lt;/script&gt;
+  &lt;/div&gt;
+&lt;/html&gt;</code>
+</pre>
+</div>
+      <p>
+        This document is styled to match the format of World Language Games as perfectly
+        as possible. As such, the design and formatting is the exclusinve intellectual
+        property of the creator of World Language Games.
+        <br />
+        <br />
+        Here is an iFrame running that code:
+      </p>
+      <div class="iframecont">
+        <iframe src="firstkandao.html"></iframe>
+      </div>
+      <p>
+        As you can see, it didn't work. There were two huge problems with this approach.
+        The first was that it was almost impossible to line up the character with
+        the reference in the back (seriously, try it!). Second, after drawing a character,
+        the percent accuracy decreases drastically because there are almost always
+        more pixels that miss than that actually overlap with the text.
+        <br />
+        <br />
+        I set about looking for an off-the-shelf alternative, and my friend suggested
+        OCR software, so I tried that. The following Javascript replaced the function
+        "countempixls", and used an XMLHttpRequest to contact and use an OCR API called
+        ocr.space.
+      </p>
+      <div class="codediv">
+        <pre><code class="language-Javascript">function countempixls(){
+     var subim = document.getElementById("myCanvas").toDataURL();
+     var trsubim = subim.slice(22);
+     var response;
+     var xhttp = new XMLHttpRequest();
+     xhttp.onreadystatechange = function(){
+       if(this.readyState == 4 && this.status == 200){
+         response = this.response;
+         console.log(response);
+       }
+     }
+     var jsonfile = {"base64Image":trsubim, "language":"chs"};
+     console.log(jsonfile);
+     xhttp.open("POST", "https://api.ocr.space/parse/image", true);
+     xhttp.setRequestHeader("apikey", "a4aaf5477788957");
+     xhttp.send(jsonfile);
+   }
+        </code>
+      </pre>
+      </div>
+      <p>
+        This didn't work either. The OCR software could not process handwriten images,
+        even when I tried using the demo on their page. It would read the image, and
+        return that it had found no text.
+        <br />
+        <br />
+        After these failures, I was desperate for something that worked every time.
+        That is when I found <a href="https://github.com/gugray/HanziLookupJS">HanziLookupJS</a>,
+        a library from github user "gugray" that was adapted from <a href="http://kiang.org/jordan/software/hanzilookup">software by Jordan Kiang</a>.
+        This software uses an enormous array of radicals that it can piece together
+        into Chinese characters to provide an astonishingly accurate guess of the
+        character you are writing.
+        <br />
+        <br />
+        After an afternoon of tinkering, I had modified it to fit in World Language Games, and
+        set it up to evaluate characters as opposed to recognising them. The only
+        truly major changes that I made were stylistic. Here is the result:
+      </p>
+      <div class="iframecont">
+        <iframe src="finalkandao.html"></iframe>
+      </div>
+      <p>
+        I won't post the code here, because it is all available at <a href="https://github.com/hansgaensbauer/kandao">GitHub</a>.
+        It is now ready to be presented to the creator of World Language Games, more on
+        that soon.
       </p>
     </div>
   </div>
