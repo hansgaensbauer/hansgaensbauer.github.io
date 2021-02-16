@@ -70,6 +70,15 @@ pre{
   margin-bottom:1vw;
 }
 
+.post video{
+  display:block;
+  width:30vw;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:1vw;
+  margin-bottom:1vw;
+}
+
 .content p{
   font-size: 14pt;
 }
@@ -156,14 +165,14 @@ pre{
   display:block;
   margin-top:0vw;
   margin-left:0vw;
-  background-color:black;
+  background-color:lightgray;
   padding:0vw;
   width:100%;
 }
 
 .hiddenlink{
   text-decoration:none;
-  color:#92b6ef;
+  color:black;
 }
 
 .hiddenlink h1{
