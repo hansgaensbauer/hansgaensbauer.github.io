@@ -93,7 +93,6 @@ pre{
 }
 
 .allimage{
-  margin-top:5vw;
   width:100%;
   height:17vw;
 }
@@ -138,7 +137,6 @@ pre{
 
 #myCanvas{
   width:auto;
-  margin-top:5vw;
   border: 1px solid black;
   padding:0px;
 }
@@ -160,9 +158,8 @@ pre{
 }
 
 #menu{
+  table-layout:auto;
   z-index:2;
-  position:fixed;
-  display:block;
   margin-top:0vw;
   margin-left:0vw;
   background-color:lightgray;
@@ -173,6 +170,11 @@ pre{
 .hiddenlink{
   text-decoration:none;
   color:black;
+  width:100%;
+}
+
+#archive{
+  text-align: right;
 }
 
 .hiddenlink h1{
@@ -182,10 +184,6 @@ pre{
 
 li .menuitem:hover {
   background-color: #3567ba;
-}
-
-#test{
-  width:100%
 }
 
 body{

@@ -3,22 +3,24 @@
 <head>
   <title>Hans Gaensbauer - Personal Website and Project Archive</title>
   <link rel="icon" href="favicon.png" type="image/gif" sizes="16x16">
-  <link rel="stylesheet" type="text/css" href="styling.css" />
+  <link rel="stylesheet" type="text/css" href="styling.css" >
   <script type="text/javascript" src="everything.js"></script>
 </head>
 <body>
   <table id="menu">
-  <td id="test">
-    <a href="index.html" class = "hiddenlink"><h1>Hans Gaensbauer - Project Archive</h1></a>
   <td>
-    <ul id="menulist">
-      <li class = "menuitem"><a href="oldindex.html">Old Projects</a></li>
-    </ul>
+    <a href="index.html" class = "hiddenlink"><h1>Hans Gaensbauer - Project Archive</h1></a>
+  </td>
+  <td id = "archive">
+      <a href="oldindex.html" class = "hiddenlink"><h1>Old Projects</h1></a>
   </td>
   </table>
   <div id= "contentsdiv">
     <h2 class = "contents">Contents</h2>
     <ul class = "contentslist">
+      <li onclick="linkt('gpr')">Ground Penetrating Radar</li>
+      <li onclick="linkt('polkadot')">Polkadot Mesh Network</li>
+      <li onclick="linkt('datalogger')">Airplane Datalogger</li>
       <li onclick="linkt('dds')">DDS-AWG</li>
       <li onclick="linkt('radar')">Radar Sounder Demo</li>
       <li onclick="linkt('devboard')">Alternative Dev Board</li>
@@ -40,7 +42,7 @@
       <li onclick="linkt('misc')">Other/Random</li>
     </ul>
   </div>
-  <img class = "allimage" src="images/dses_sunset.jpg" alt="political action committee sticker" />
+  <img class = "allimage" src="images/dses_sunset.jpg" alt="political action committee sticker" >
   <div class = "content">
     <h1>Project Archive</h1>
     <p>
@@ -49,6 +51,165 @@
       undoubtedly lose at some point. Every image on this page is my own, and unless otherwise 
       noted all PCBs are my own designs. 
     </p>
+    <div id="gpr" class = "post">
+      <h2>500 Msps DDS-AWG for Radar Simulation</h2>
+      <p>
+        This is my writeup of the work I've done developing a ground penetrating synthetic aperture
+        radar for the Husky Satellite Lab at UW. 
+        <br><br>
+        LaTeX Version of this Whitepaper: Coming Soon
+        <h3>Background</h3>
+
+        I joined the Husky Satellite Lab (HSL) in 2019, just in time to see the years of hard
+        work the group had put into Huskysat-1 culminate in a successful deployment from the
+        ISS. After operating the satellite for several months, we transferred control to Amsat 
+        and all of the older members of the club who had stuck around to see the project through
+        moved on. After my first year, virtually all of the older members had left, leaving only 
+        a handful of us to choose a new project for the group. Professor Robert Winglee (who sadly 
+        passed away that winter) was our PI at the time, and he strongly encouraged us to develop
+        technologies that targeted a lunar mission. 
+        <br><br>
+        I proposed the Ground Penetrating Radar to the group after reading a few articles about lunar
+        lava tubes. The first is <a href="https://www.sciencedirect.com/science/article/abs/pii/S0019103516303566">
+        The structural stability of lunar lava tubes</a> by David M. Blair et al., which uses FEA to
+        suggest that lava tubes on the moon could be kilometers wide and hundreds of meters tall - large
+        enough to fit a small city. A second article (<a href="https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2016GL071588">
+        Evidence of large empty lava tubes on the Moon using GRAIL gravity</a> by Loic Chappaz et al.)
+         found supporting evidence for these large subsurface voids in GRAIL gravimetric data.
+        Finally, <a href="https://www.sciencedirect.com/science/article/abs/pii/S0032063317303185">
+        A multi-frequency radar sounder for lava tubes detection on the Moon: Design, performance 
+        assessment and simulations </a>  by Leonardo Carrer, Christopher Gerekos, and Lorenzo Bruzzone"
+        presented simulations of a radar sounder instrument that would be able to detect most of the possible
+        lava tube geometries described by Blair's paper. After speaking with both David Blair and Cristopher 
+        Gerekos (who designed the simulator used in the third paper), I thought it would be reasonable to 
+        try to build the instrument that they had described.
+        <br><br>
+        Originally, this project had no budget, and I paid for a lot of the equipment out of pocket. After I 
+        was able to demonstrate a working radar, we were granted $2000 by the Washington NASA Space Grant 
+        Consortium, which was presided over by Professor Winglee. These funds covered the hardware cost of 
+        both the GPR itself, as well as the DDS-AWG that we built to test it.
+
+        <h3>Instrument Principles</h3>
+        Several physical properties of the moon constrain the radar parameters. Lower center frequencies yield 
+        greater penetration depths, and larger bandwidths yield finer resolution. There is, however, a tradeoff
+        between a lower center frequency and higher bandwidth, because as the fractional bandwidth of the chirp 
+        becomes very large, the whole system becomes harder to match/tune. Because it is not possible to deploy 
+        a large, wideband antenna from a small satellite, other orbital synthetic aperture radars (SAR) like the 
+        LRS, SHARAD, and ALSE use isotropic dipoles for their low frequency experiments; since we would have to do 
+        this as well, we were very concerned about how well we could match the antenna.
+        <br><br>
+        We also had to choose an architecture for the radar, with low cost and rapid development taking priority
+        over long mission duration or even instrument performance - the goal was a technology demonstration and 
+        possible lave tube detection, not a detailed characterization or mapping of any lunar lava tubes. We chose 
+        to use a DDS-based architecture because a DDS gives us unmatched flexibility for our waveform, and because 
+        it allowed us to keep our analog frontend as small as possible (we only obtained access to a VNA halfway
+        through the project). The GPR is based on the LRS - the DDS generates a windowed chirp that is transmitted,
+        a T/R switch is flipped, and the echo is amplified and mixed with a second, identical chirp with a known
+        time offset. This "de-chirp" method allows us to significantly reduce the required analog bandwidth and
+        sample rate for the receiver, since we can trade vertical coverage (the range of our resulting radargrams
+        in the nadir direction) for a lower beat frequency from the mixer. This way, we can use chirped signals with 
+        center frequencies above 100MHz, and sample the beat frequency at 100Mhz or less without approaching the 
+        Nyquist rate. It is worth noting that the pulse duration is also traded here - long pulses give lower beat 
+        frequencies, but since the radar is half-duplex, the pulses must be short enough that consecutive pulses do
+        not overlap.
+        <img src="images/AD9910-DDS.png" alt="A diagram of the GPR">
+        We choose to use the AD9910 from Analog Devices as the DDS core for the GPR. At $63, we couldn't beat it 
+        for price given the level of integration, and it has a number of very useful features that make it perfect for 
+        our application. First, it has an internal "ramp generator" which can be programmed to sweep amplitude, frequency
+        or phase while the DDS operates. This gives us a very easy way to generate the variable length chirps with 
+        the desired start and stop frequencies. Additionally, the AD9910 has an internal RAM that can be read out 
+        in order to modulate frequency, phase, or amplitude. By programming the RAM with a Hann window and targeting
+        amplitude, we can window the chirp while it is generated. Finally, because the Hann window is completely 
+        arbitrary, we can tweak the amplitudes to predistort the chirp, in order to account for the transfer function
+        of the hardware on the DDS output. 
+        <h3>Test Plan and the DDS-AWG</h3>
+        As we made progress toward specifying the radar parameters, specifically the chirp bandwidth (30MHz) and 
+        center frequency (80MHz), we realized that evaluating the instrument on Earth would be extremely difficult. 
+        The first challenge is that there are very few places in Washington or even on Earth that are as dry as the
+        moon, with targets that look like lave tubes. Terrestrial lava tubes are too small to be detectable with 
+        our system, and there was always going to be the challenge of moving the instrument 50-100km away from the 
+        target to simulate the altitude of a lunar orbit. These challenges, of course, are not insurmountable, and we
+        put together detailed plans for overcoming them: we could test with higher frequencies and bandwidths on Earth
+        to resolve smaller features, use high altitude balloons to check our instrument at altitude, and run as many 
+        lab tests as possible to confirm that the radar was behaving as expected. The second problem is that the low 
+        center frequency and high bandwidth of the radar means that the chirp it generates spans an enormous chunk of 
+        the VHF spectrum. Professor Winglee was very against obtaining an experimental license from the FCC, and although
+        he allowed us to try, the presence of a few military frequency allocations in the band we were interested in
+        stalled the process almost immediately.
+        <br><br>
+        In liu of real-world testing at the system level, I proposed that, in addition to the real-world tests we had
+        already described, we could use the radar simulator that Chris Gerekos had built for his lava tube paper to 
+        simulate reflections from the moon. This simulator starts with a chirped waveform, and computes the echo by 
+        summing the reflected signals from millions of triangles imported from a user supplied DEM of the lunar surface.
+        We could generate a chirp with our instrument and record it with a DSO, and then feed this signal into the 
+        simulator. We'd allow the simulator to calculate the reflected chirp, and then we would synthesize it, attenuate
+        it, and feed it back into the radar after the appropriate delay. Then, we could take the output from the radar 
+        and perform SAR processing on a collection of these rangelines to recover the radargram, which we would 
+        compare to the simulated radargrams in Gerekos' paper.
+        <br><br>
+        This idea garnered the support of Professor Winglee and the rest of the satellite lab, but it required us to 
+        obtain or design/build a DDS capable of simulating the rangelines returned by Gerekos' simulator. I spoke to
+        an engineer at Siglent, and their highest performance AWG could only generate some of the waveforms we are
+        interested in. We would not be able to afford the kind of instrument that we needed, so I started working on
+        a design built around the DAC5687 from Texas Instruments. This chip can use an onboard NCO to upconvert input
+        data at a lower sample rate to a full 500MSps. The rest of the AWG consists only of a CPLD which allows a user
+        to program a high speed SRAM with waveform data, and a USB-Serial converter from Microchip. The design files
+        and HDL for this DDS are open source and available <a href="https://github.com/UWCubeSat/hs2-dds-hardware">on Github</a>.
+        <h3>Bringup</h3>
+        After Professor Winglee passed away, I laid out hardware for the radar and we purchased the boards and components.
+        This is what it looked like after 8 hours of assembly:
+        <img src="images/gpr-pcba.jpg" alt="The assembled radar PCB">
+        This PCB is designed for development only, so it would not fit in a cubesat form factor and it makes extensive 
+        use of jumper cables.
+        <br><br>
+        Progress stalled after I graduated and turned the hardware over to my peers at the Husky Satellite Lab - as I 
+        understand it, the lab was restructured and nobody was available to pick it up. In August 2021, I reached out 
+        and asked if I could have the hardware sent to me so that I could keep working on it, and I mounted the radar, 
+        the DDS, and an STM32 eval board to a sheet of prepreg I had laying around. I wrote a driver for the AD9910 
+        (open source, on <a href="https://github.com/UWCubeSat/hs2-gpr">Github</a>) that allows the instrument to generate 
+        Hann windowed chirps that match the expected waveform:
+        <img src="images/chirp.png" alt="A DSO capture of a Hann Windowed Chirp">
+        <img src="images/gpr-2.jpg" alt="The radar setup with a chirp in the background">
+        <h3>Radar Simulator Testing</h3>
+
+        I'm still working on this project, and I'll keep this page up to date.
+      </p>
+    </div>    
+    <div id="polkadot" class = "post">
+      <h2>Polkadot Mesh Network</h2>
+      <p>
+        I did this project for the embedded systems capstone at UW. I had been toying with the idea 
+        of building a LoRa mesh network for radio stations, and I took the opportunity to build 
+        the hardware I was picturing and to learn a lot about mesh networking by implementing AODV 
+        in embedded C. In our group, I was responsible for the hardware and the mesh networking firmware, 
+        while my group members built a Raspberry Pi based server that allowed a user to interact with the 
+        mesh in real time. All of the hardware and the software that I've created is free to share and use,
+        and it can be found <a href="https://github.com/hansgaensbauer/polkadot">on Github</a>.
+
+        <img src="images/polkadot-many.jpg" alt="The ten polkadot boards">
+        <img src="images/polkadot-back.jpg" alt="The back of the polkadot boards">
+        <img src="images/polkadot-profile.jpg" alt="The polkadot board, front side with shield">
+        <img src="images/polkadot-case.jpg" alt="The ten polkadot board in its case">
+
+        The last photo shows a polkadot board in a 3D printed case with a solar panel. I designed the case
+        to bolt to a metal post from the hardware store (the ones used to hold trees upright).
+      </p>
+    </div>
+    <div id="datalogger" class = "post">
+        <h2>Airplane Datalogger</h2>
+        <p>
+          One of my friends was interested in building and flying remote control aircraft, so I made
+          a device that "hides" between the receiver and the servo motor connectors. The device saves 
+          the PWM duty cycle of each of the six receiver channels to an SD card, so that the position
+          of each of the control surfaces could be logged over the course of a flight. Additionally, the 
+          datalogger was equipped with a triaxial magnetometer and a six axis IMU.
+          <img src="images/datalogger-1.jpg" alt="A picture of the datalogger">
+          <img src="images/datalogger-2.jpg" alt="A picture of the datalogger">
+          <img src="images/datalogger-3.jpg" alt="A picture of the datalogger">
+          As of this writing, I am still waiting for them to conduct a successful flight, but I have
+          faith that they will pull it off, and I'll post any data we get here.
+        </p>
+    </div>
     <div id="dds" class = "post">
       <h2>500 Msps DDS-AWG for Radar Simulation</h2>
       <p>
@@ -60,7 +221,7 @@
         system to synthesize radar returns generated by Chris Gerekos' Coherent Multilayer
         simulator, and this is what I built after that proposal was funded. 
 
-        <img src="images/dds.jpg" alt="the DDS PCB" />
+        <img src="images/dds.jpg" alt="the DDS PCB" >
 
         The DDS uses an Altera Max V CPLD to load an SRAM with data extracted from Gerekos'
         simulator. When the system receives a trigger signal, the CPLD reads out the data in 
@@ -70,8 +231,8 @@
         that I created for this project is open source, and it can be found at 
         <a href="https://github.com/UWCubeSat">the UW Cubesat Github Repository</a>.
         
-        <img src="images/ddssine.png" alt="The beginning of a sine wave pulse created by the DDS" />
-        <img src="images/ddssquare.png" alt="The beginning of a square wave pulse created by the DDS" />
+        <img src="images/ddssine.png" alt="The beginning of a sine wave pulse created by the DDS" >
+        <img src="images/ddssquare.png" alt="The beginning of a square wave pulse created by the DDS" >
 
         An example output from the DDS, synthesizing first a square wave and then a sine wave
         at baseband. 
@@ -84,16 +245,16 @@
         I used an AD9910 demo board with a custom driver to synthesize chirps that could be transmitted or fed into 
         a coax delay line. The received signal would be de-chirped, filtered and digitized by the sound card in my
         laptop. 
-        <img src="images/radar.jpg" alt="The radar receiver" />
-        <img src="images/radar_response.png" alt="The radar response of a building on campus" /> 
+        <img src="images/radar.jpg" alt="The radar receiver" >
+        <img src="images/radar_response.png" alt="The radar response of a building on campus" > 
         The image above shows the radar response to a building on campus at the predicted distance.
       </p>
     </div>
     <div id="devboard" class = "post">
       <h2>Alternative Dev Board</h2>
       <p>
-        <img src="images/devboard_lights.jpg" alt="The illuminated dev board" />
-        <img src="images/devboard.jpg" alt="Finer detail on the dev board" />
+        <img src="images/devboard_lights.jpg" alt="The illuminated dev board" >
+        <img src="images/devboard.jpg" alt="Finer detail on the dev board" >
         The digital design classes at the University of Washington use the DE1-SoC development kit
         from Terasic for all of the lab assignments. Unfortunately, the cost of this board means that
         we cannot keep the hardware after finishing the course, so I designed this very low cost 
@@ -113,8 +274,8 @@
         microphone amplifier circuit feeds the raw sound signal to the ADC of an STM32F4, which DMAs a few
         milliseconds worth of samples into a buffer and then uses the ARM CMSIS DSP library to take an FFT. 
         The brightness of the RGB leds around the PCB is set in real time by the coefficients from the FFT. 
-        <img src="images/vumeter.jpg" alt="The Vu meter connected to the programmer" />
-        <img src="images/vumeter_light.jpg" alt="The VU meter while sound is playing" />
+        <img src="images/vumeter.jpg" alt="The Vu meter connected to the programmer" >
+        <img src="images/vumeter_light.jpg" alt="The VU meter while sound is playing" >
         <video controls>
           <source src="images/vumeter.mp4" type="video/mp4">
         Your browser does not support the video tag.
@@ -130,9 +291,12 @@
         by the Husky Satellite Lab, and it was the first project that I was assigned after joining
         the club. Unfortunately, a number of factors meant that the structure and software aspects
         of the balloon were never finished, but I was able to build and test all of the electronics. 
+        The photos below show the cutdown detector, a langmuir probe controller, the power distribution 
+        board, and the ADCS/IMU board.
 
-        <img src="images/cutdown.jpg" alt="The custom cutdown detector" />
-        <img src="images/langmuir.png" alt="The langmuir probe controller" />
+        <img src="images/cutdown.jpg" alt="The custom cutdown detector" >
+        <img src="images/langmuir.png" alt="The langmuir probe controller" >
+        <img src="images/phat2.jpg" alt="The cutdown PCB, PDB, and ADCS boards for phat2" >
 
         The coolest part of the driver electronics is the Pulsed Plasma Thruster (PPT) charger and 
         igniter. The Advanced Propulsion Laboratory at the University of Washington had a design for 
@@ -143,7 +307,7 @@
         eliminate one of the flyback converters and use a 2 layer PCB. It could charge a 100uF bank of 
         capacitors to 800V in a few hundred milliseconds, and generate 26kV arcs for ignition.
 
-        <img src="images/spark.png" alt="A spark from the igniter circuitry" />
+        <img src="images/spark.png" alt="A spark from the igniter circuitry" >
 
         For this project, I also build a langmuir probe controller and frontend, a power distribution 
         board, and a very simple system for detecting when the flight was terminated by a nichrome wire
@@ -160,18 +324,18 @@
         in the concrete caused really high CPR and all kinds of false positives (I can detect ice when it's
         not buried). At least I learned a lot about concrete. 
 
-        <img src="images/limesdrsetup.jpg" alt="A system for CPR measurements with the LimeSDR" />
-        <img src="images/pattern_RHCP.jpg" alt="Simulated RHCP Emission patter for the spiral antennas" />
-        <img src="images/an1_swr.png" alt="SWR measurements for the antenna" />
+        <img src="images/limesdrsetup.jpg" alt="A system for CPR measurements with the LimeSDR" >
+        <img src="images/pattern_RHCP.jpg" alt="Simulated RHCP Emission patter for the spiral antennas" >
+        <img src="images/an1_swr.png" alt="SWR measurements for the antenna" >
         SWR Measurements for the antennas, showing a good match at 915MHz despite being electrically small
-        <img src="images/burtarget.jpg" alt="A buried ice target in the test setup" />
-        <img src="images/targets.jpg" alt="The test targets for cpr detection" />
+        <img src="images/burtarget.jpg" alt="A buried ice target in the test setup" >
+        <img src="images/targets.jpg" alt="The test targets for cpr detection" >
 
         I also built a system for automating the CPR measurements using an RF switch controlled by the 
         FPGA GPIO pins on the LimeSDR. The baluns and the RF switch PCB are mine. Here are the (very inconclusive)
         results:
 
-        <img src="images/cpr_results.png" alt="Results of CPR testing" />
+        <img src="images/cpr_results.png" alt="Results of CPR testing" >
 
         Either the system was nonfunctional (although I did test every component and they performed as expected in
         isolation) or the setup was flawed. Concrete is a poor lunar simulant and I was using a very small box with 
@@ -184,8 +348,8 @@
         I wanted to see how small I could make a controller for a sous vide. This PCB packs a capacitive 
         power supply (eek!), an ATMega based PID controller and a giant solid state relay, all of which 
         fits in a 2.5 by 1.25 by 0.5 inch box fit along the cord.
-        <img src="images/sousvide.jpg" alt="Sous Vide Controller" />
-        <img src="images/sousvide_on.jpg" alt="Sous Vide Controller, powered on" />
+        <img src="images/sousvide.jpg" alt="Sous Vide Controller" >
+        <img src="images/sousvide_on.jpg" alt="Sous Vide Controller, powered on" >
       </p>
     </div>
     <div id="powermon" class = "post">
@@ -196,8 +360,8 @@
         myself with the CNC mills at the University of Washington, and I was in contact with a Chinese manufacturer 
         of outlets for a while about it until they realized that I was not a real engineer and stopped responding. 
 
-        <img src="images/outletprof.jpg" alt="Outlet Power Monitor" />
-        <img src="images/outletside.jpg" alt="Outlet Power Monitor" />
+        <img src="images/outletprof.jpg" alt="Outlet Power Monitor" >
+        <img src="images/outletside.jpg" alt="Outlet Power Monitor" >
       </p>
     </div>
     <div id="psu" class = "post">
@@ -210,7 +374,7 @@
         that can be adjusted from +-2V to +-15V and gave one to everyone on the electronics team in the 
         Husky Satellite Lab:
 
-        <img src="images/psu.jpg" alt="Outlet Power Monitor" />
+        <img src="images/psu.jpg" alt="Outlet Power Monitor" >
       </p>
     </div>
     <div id="epaper" class = "post">
@@ -218,9 +382,9 @@
       <p>
         Practice with low power modes on the STM32. I made a little clock that told the time in Chinese 
         on an Epaper display. It is powered with a single CR2032 and I'm very proud of the PCB.
-        <img src="images/epaper_closeup.jpg" alt="A closeup of the Epaper Clock" />
-        <img src="images/epaper_connected.jpg" alt="The clock connected to the display" />
-        <img src="images/epaper_front.jpg" alt="The finished clock, with the PCB covered by the display" />
+        <img src="images/epaper_closeup.jpg" alt="A closeup of the Epaper Clock" >
+        <img src="images/epaper_connected.jpg" alt="The clock connected to the display" >
+        <img src="images/epaper_front.jpg" alt="The finished clock, with the PCB covered by the display" >
       </p>
     </div>
     <div id="LEDSign" class = "post">
@@ -237,7 +401,7 @@
           Your browser does not support the video tag.
         </video>
 
-        <img src="images/panel.png" alt="A rendering of each of the panels" />
+        <img src="images/panel.png" alt="A rendering of each of the panels" >
 
         Sadly, I do not have any photos of the panels after they were assembled. There were 16 panels and one 
         controller PCB that attached to one end and contained a power supply and the mosfets for controlling 
@@ -265,7 +429,7 @@
         and etched a PCB for it. The PCB is potted in 5 minute epoxy for waterproofing, and it used a Xilinx Coolrunner II
         CPLD.
 
-        <img src="images/sprinkler.jpg" alt="The sprinkler controller" />
+        <img src="images/sprinkler.jpg" alt="The sprinkler controller" >
       </p>
     </div>
     <div id="ledcube" class = "post">
@@ -275,7 +439,7 @@
         connect directly to a raspberry pi. We went as far as building the cube, but after the pandemic started 
         he wasn't able to give it to her. 
 
-        <img src="images/ledcube.jpg" alt="The LED Cube Controller" />
+        <img src="images/ledcube.jpg" alt="The LED Cube Controller" >
       </p>
     </div>
     <div id="damic" class = "post">
@@ -286,8 +450,8 @@
         the dark matter detectors at the right temperature during testing. The system was incredibly sensitive to 
         noise, so no switching components could be used. 
 
-        <img src="images/damic_heater.jpg" alt="The DAMIC linear heater controller" />
-        <img src="images/damic_heater_app.jpg" alt="The DAMIC linear heater controller outside of the DAMIC vacuum chamber" />
+        <img src="images/damic_heater.jpg" alt="The DAMIC linear heater controller" >
+        <img src="images/damic_heater_app.jpg" alt="The DAMIC linear heater controller outside of the DAMIC vacuum chamber" >
 
         Later, I build a ramp generator which would allow a user to program the slew rate of the bias lines that
         powered the detector. The ramp generator had to consume absolutely no current when it was on or off, and 
@@ -301,7 +465,7 @@
         horticultural LEDs that turns on when the sun is out and turn off when the lights turn off. I also 
         fixed all of the three way switches in my house.
 
-        <img src="images/growlamp_plant.jpg" alt="The grow lamp shining on a succulent" />
+        <img src="images/growlamp_plant.jpg" alt="The grow lamp shining on a succulent" >
       </p>
     </div>
     <div id="crazyflie" class = "post">
@@ -309,7 +473,7 @@
       <p>
         A tiny deployment mechanism for the Crazyflie drone. It worked very well until I added the deployables XD.
 
-        <img src="images/crazyflie.jpg" alt="Crazyflie deployment mechanism" />
+        <img src="images/crazyflie.jpg" alt="Crazyflie deployment mechanism" >
       </p>
     </div>
     <div id="lccs" class = "post">
@@ -318,7 +482,7 @@
         An excuse to put a raspberry pi in a box of mineral oil. The Raspberry Pi is overclocked and a close friend wrote
         a program to plot the CPU temperature over time. The liquid cooling actually worked!
 
-        <img src="images/lccs.jpg" alt="A raspberry pi submerged in mineral oil" />
+        <img src="images/lccs.jpg" alt="A raspberry pi submerged in mineral oil" >
       </p>
     </div>
     <div id="misc" class = "post">
@@ -327,7 +491,7 @@
         A lof of my projects weren't well documented enough to get their own section (and a lot of them are too 
         ridiculous or useless to deserve one). I've put the rest of the photos that I have here.
 
-        <img src="images/newtonian_reflector.jpg" alt="A diy Newtonian Reflector" />
+        <img src="images/newtonian_reflector.jpg" alt="A diy Newtonian Reflector" >
         My DIY Newtonian reflector
 
         <video controls>
@@ -337,7 +501,7 @@
         I gave a presentation about hacking the GPIO functionality of an RTL-SDR Dongle at the Society of Amateur Radio
         Astronomers (SARA) Conference 2019.
 
-        <img src="images/touchscreen_bare.jpg" alt="The contacts used for a DIY touchscreen enabled wall" />
+        <img src="images/touchscreen_bare.jpg" alt="The contacts used for a DIY touchscreen enabled wall" >
         <video controls>
           <source src="images/touchscreen_test.mp4" type="video/mp4">
           Your browser does not support the video tag.
@@ -345,13 +509,13 @@
         I did some work on making a wall scale capacitive touchscreen at the Makerspace where I worked, before my boss
         cancelled the project.
 
-        <img src="images/paste.jpg" alt="Paste Extruder in Action" />
-        <img src="images/paste_dissasembled.jpg" alt="Disassembled paste extruder" />
+        <img src="images/paste.jpg" alt="Paste Extruder in Action" >
+        <img src="images/paste_dissasembled.jpg" alt="Disassembled paste extruder" >
         I made a paste extruder for a 3D printer at the makerspace where I worked. The upper photo shows it printing with 
         royal icing. The entire mechanism is my design, I 3d printed most of the parts and laser cut the gears out of acrylic.
 
-        <img src="images/antenna_tower.jpg" alt="My antenna tower" />
-        I built an antenna tower and mounted it on my room. In this photo, it has a 134MHz V dipole for receiving APT from NOAA
+        <img src="images/antenna_tower.jpg" alt="My antenna tower" >
+        I built an antenna tower and mounted it on my roof. In this photo, it has a 134MHz V dipole for receiving APT from NOAA
         weather satellites.
 
         <video controls>
@@ -360,8 +524,27 @@
         </video>
         I used the DE1-SoC for one of my digital design courses to build the glue logic and memories for a Z80 microprocessor. 
 
-        <img src="images/dac_eval.jpg" alt="Evaluation board for DAC5687" />
+        <img src="images/dac_eval.jpg" alt="Evaluation board for DAC5687" >
         I used this DIY breakout board for the DAC5687 for developing the DDS.
+
+        <img src="images/tempc-1.jpg" alt="A view of the temperature controller system" >
+        <img src="images/tempc-2.jpg" alt="A view of the peltier module and heatsink for the TC system" >
+        <img src="images/temp1.png" alt="A graph of temperature over time for the temp controller" >
+        I was interested in making aluminum PCBs, so I designed one that fits on a heatsink and supports a 
+        single temperature sensor IC. When the device is sitting on my desk, I can see my air conditioning
+        turning on and off, but when I set up a PID loop on an arduino with the peltier module, the PCB
+        temperature is held relatively constant.
+
+        <img src="images/pv.jpg" alt="My solar power system" >
+        <img src="images/latching-relay.jpg" alt="A custom latching relay driver on a breadboard" >
+        I've designed solar power systems a few times, but none of the had even been built and I wanted to 
+        develop some intuition for how this stuff goes together. I bought the cheapest parts I could find, 
+        and I took the opportunity to have some fun building a completely analog latching relay driver for 
+        the UVLO on the load.
+
+        <img src="images/emc.jpg" alt="A DIY emc probe" >
+        I built an EMC probe using soe RG316 coax and a ferrite bead, using the EEVblog video as a guide. I 
+        printed an enclosure for mine.
       </p>
     </div>
   </div>

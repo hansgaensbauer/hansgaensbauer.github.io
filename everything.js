@@ -3,7 +3,7 @@ the gliding menu*/
 
 var cblock;
 var rrect;
-var offset = (0.185 * document.documentElement.clientWidth);
+var offset = (0.205 * document.documentElement.clientWidth);
 var cstyle;
 var ttop;
 
@@ -40,7 +40,7 @@ function initialize(){
     //console.log("distance to top: " + ttop);
     if(ttop >= offset){
       cstyle.position = "fixed";
-      cstyle.top = "5vw";
+      cstyle.top = "2vw";
       //console.log("if");
     }
     else{
