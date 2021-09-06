@@ -188,11 +188,13 @@
         cable (0.83 for cheap RG6) into account:
         <img src="images/final_wide.png" alt="Radar results, showing agreement between theoretical and calculated results">
         <img src="images/final_zoom.png" alt="Radar results, zoomed in">
-        I've zoomed in on the second image to make the length of the coax more obvious. The system correctly identifies
-        the length of the coaxial cable as 152 meters (500ft). In these images, the real system seems to outperform the 
-        theoretical calculations, which is bizarre to me. I've checked and re-checked for errors in the calculations, and
-        if I had to guess this is due to the bandpass filters that exist in hardware, which remove a lot of the unwanted
-        high frequency content after the mixer. This is also still under investigation. 
+        I've zoomed in on the second image to make the length of the coax more obvious. The system's measured length
+        is within 5m (the range resolution) of the true 152m (500ft) length of the coaxial cable. In these images, 
+        the real system seems to outperform the theoretical calculations, which was bizarre to me. After checking for errors, I realized that this was due to 
+        the filtering that the real signal had. After digitally filtering the theoretical IF, it outperforms the 
+        real system:
+        <img src="images/dechirp-filtered.png" alt="Radar IF, with filtered theoretical data">
+        <img src="images/filtered-results.png" alt="Radar results, with filtered theoretical data">
       </p>
     </div>    
     <div id="polkadot" class = "post">
