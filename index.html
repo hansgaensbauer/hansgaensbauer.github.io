@@ -172,8 +172,27 @@
         <img src="images/chirp.png" alt="A DSO capture of a Hann Windowed Chirp">
         <img src="images/gpr-2.jpg" alt="The radar setup with a chirp in the background">
         <h3>Radar Simulator Testing</h3>
-
-        I'm still working on this project, and I'll keep this page up to date.
+        The first test of the system involves measuring the length of a spool of coaxial cable from Home Depot.
+        Because we cannot legally transit at the frequencies that the radar is designed to use, an end-to-end test is only possible 
+        if the signal is confined to a cable. I connect the output which would normally feed the PA to one length
+        of coaxial cable, and I connect the other end of the cable to the antenna connector. The transmit/receive 
+        switch is set to receive, and a switch on the PCB feeds the output of the DDS into a power divider. This 
+        way, half the signal goes through the coaxial cable, and the other half goes directly into the mixer. The 
+        radar generates a chirp from 65 to 95MHz that lasts for 1 millisecond. The raw output of the mixer is shown 
+        below, along with the theoretical result:
+        <img src="images/dechirp.png" alt="A graph of the theoretical and experimental dechirped signals">
+        The Hann windows are not perfectly congruent - this is something we are investigating. It is likely that 
+        this is an error in the programmed Hann window, but it can be fixed with predistortion in an case. The 
+        measured tie delay can be calculated by taking an FFT, and dividing by the frequency rate of change. The 
+        distance is then just the time delay times the speed of light, taking the velocity factor of the coaxial 
+        cable (0.83 for cheap RG6) into account:
+        <img src="images/final_wide.png" alt="Radar results, showing agreement between theoretical and calculated results">
+        <img src="images/final_zoom.png" alt="Radar results, zoomed in">
+        I've zoomed in on the second image to make the length of the coax more obvious. The system correctly identifies
+        the length of the coaxial cable as 152 meters (500ft). In these images, the real system seems to outperform the 
+        theoretical calculations, which is bizarre to me. I've checked and re-checked for errors in the calculations, and
+        if I had to guess this is due to the bandpass filters that exist in hardware, which remove a lot of the unwanted
+        high frequency content after the mixer. This is also still under investigation. 
       </p>
     </div>    
     <div id="polkadot" class = "post">
