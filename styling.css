@@ -126,6 +126,23 @@ pre{
   padding:0vw 2vw;
 }
 
+.resources{
+  width:60vw;
+  position:relative;
+  left:20vw;
+  background-color:#f7faff;
+  padding:0vw 2vw;
+}
+
+.resources h1{
+  text-align:center;
+}
+
+.resources ul{
+  padding-left:4em;
+  margin-top:0px;
+}
+
 #menulist{
   text-align:center;
   display:table;
