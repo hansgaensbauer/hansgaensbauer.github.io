@@ -20,6 +20,7 @@
     <ul class = "contentslist">
       <li onclick="linkt('mrr')">Diagnostic MRR</li>
       <li onclick="linkt('interferometer')">DSES Interferometer</li>
+      <li onclick="linkt('aoa')">Solid State AoA Sensor</li>
       <li onclick="linkt('wellmonitor')">Well Monitor</li>
       <li onclick="linkt('gpr')">Ground Penetrating Radar</li>
       <li onclick="linkt('polkadot')">Polkadot Mesh Network</li>
@@ -91,6 +92,25 @@
         <img src="images/wdb-cad.png" alt="mechanical CAD for the well monitor">
         <img src="images/wdb-asm.jpg" alt="Well depth sensor mockup">
         <img src="images/depth-sensor.jpg" alt="Well depth sensor PCB">
+        <br><br>
+      </p>
+    </div>
+    <div id="aoa" class = "post">
+      <h2>Solid State Angle of Attack Sensor</h2>
+      <p>
+        This sensor uses an ultrasonic emitter and an array of microphones to calculate windspeed and airflow direction without any moving
+        parts. By comparing the phase of the recorded signal at each of the microphones, it is possible to calculate the delay or speedup 
+        caused by the moving airmass.
+        <img src="images/aoa_sensor.jpg" alt="The angle of attack sensor">
+        I tested the sensor by fitting it to a car window with cardboard and driving around at different speeds:
+        <img src="images/aoa_setup.jpg" alt="AoA Sensor Testing Setup">
+        <img src="images/aoa_results.png" alt="Phase plot from AoA sensor">
+        The plot shows that the phase change for each mic is correctly correlated with the position of the mic relative to the airflow
+        direction and the ultrasound emitter. Mic was furthest forward (see first image above), mic 5 was furthest back. Also, the separation 
+        of the phases increases at higher speeds, allowing the sensor to measure airspeed.
+        <br>
+        Because this is just a prototype, I used a Saleae logic analyzer to capture raw data from each of the mics, and extracted the appropriate
+        DFT terms using Goertzel's algorithm (see notebook <a href="AoA Sensor Evaluation.ipynb">here</a>). 
         <br><br>
       </p>
     </div>
