@@ -18,6 +18,7 @@
   <div id= "contentsdiv">
     <h2 class = "contents">Contents</h2>
     <ul class = "contentslist">
+      <li onclick="linkt('drc')">Design Review Checklist</li>
       <li onclick="linkt('mrr')">Diagnostic MRR</li>
       <li onclick="linkt('interferometer')">DSES Interferometer</li>
       <li onclick="linkt('aoa')">Solid State AoA Sensor</li>
@@ -48,7 +49,7 @@
       <li onclick="linkt('misc')">Other/Random</li>
     </ul>
   </div>
-  <img class = "allimage" src="images/dses_sunset.jpg" alt="political action committee sticker" >
+  <img class = "allimage" src="images/dses_sunset.jpg" alt="A photo of the sunset taken at the DSES" >
   <div class = "content">
     <h1>Project Archive</h1>
     <p>
@@ -57,6 +58,18 @@
       undoubtedly lose at some point. Every image on this page is my own, and unless otherwise
       noted all PCBs are my own designs.
     </p>
+    <div id="drc" class = "post">
+      <h2>Design Review Checklist</h2>
+      <p>
+        I regularly make small mistakes in schematics that, if uncaught, waste time during design reviews. This checklist, designed
+        to be printed double sided, cut out, and laminated, helps a designer remember the most important checks when laying out a new
+        design in a hurry. Version 1 is still very rough and I will continue to make changes as I incorporate it into my design workflow.
+        <img src="images/dr-card.jpg" alt="A photo of the printed out DR card">
+        The back side has several common analog circuits that I reference regularly. These will be better labeled in V2. 
+        <br><br>
+        <a href="DR-Card-Full.pdf">PDF Download</a>
+      </p>
+    </div>
     <div id="mrr" class = "post">
       <h2>Diagnostic MRR - <a href="https://github.com/hansgaensbauer/diagnostic-mrr">Github Page</a></h2>
       <p>
