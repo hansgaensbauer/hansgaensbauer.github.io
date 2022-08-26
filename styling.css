@@ -87,6 +87,11 @@ pre{
   font-size: 14pt;
 }
 
+.contents{
+  margin-top:0vw;
+  margin-bottom:10px;
+}
+
 .contentslist li {
   color:black;
   text-decoration:underline;
