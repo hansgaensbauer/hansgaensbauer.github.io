@@ -11,43 +11,44 @@
   <td>
     <a href="index.html" class = "hiddenlink"><h1>Hans Gaensbauer - Project Archive</h1></a>
   </td>
-  <td id = "archive">
-      <a href="oldindex.html" class = "hiddenlink"><h1>Old Projects</h1></a>
-  </td>
   </table>
   <div id= "contentsdiv">
     <h2 class = "contents">Contents</h2>
     <ul class = "contentslist">
-      <li onclick="linkt('rflens')">3D Printed Dielectric Lenses</li>
-      <li onclick="linkt('drc')">Design Review Checklist</li>
-      <li onclick="linkt('mrr')">Diagnostic MRR</li>
-      <li onclick="linkt('interferometer')">DSES Interferometer</li>
-      <li onclick="linkt('aoa')">Solid State AoA Sensor</li>
-      <li onclick="linkt('wellmonitor')">Well Monitor</li>
-      <li onclick="linkt('gpr')">Ground Penetrating Radar</li>
-      <li onclick="linkt('polkadot')">Polkadot Mesh Network</li>
-      <li onclick="linkt('datalogger')">Airplane Datalogger</li>
-      <li onclick="linkt('radiosonde')">Small Radiosonde</li>
-      <li onclick="linkt('dds')">DDS-AWG</li>
-      <li onclick="linkt('radar')">Radar Sounder Demo</li>
-      <li onclick="linkt('devboard')">Alternative Dev Board</li>
-      <li onclick="linkt('vumeter')">VU-Meter/Spectrum Visualizer</li>
-      <li onclick="linkt('phat2')">PHAT-2</li>
-      <li onclick="linkt('burice')">Buried Ice Detection</li>
-      <li onclick="linkt('sousvide')">Sous-vide Controller</li>
-      <li onclick="linkt('powermon')">Outlet Power Indicator</li>
-      <li onclick="linkt('psu')">Breadboard Split Rail PSU</li>
-      <li onclick="linkt('epaper')">STM32 E-Paper Clock</li>
-      <li onclick="linkt('LEDSign')">LED Matrix</li>
-      <li onclick="linkt('sterilizer')">UVC Mask Sterilizer</li>
-      <li onclick="linkt('sprinkler')">Sprinkler Controller</li>
-      <li onclick="linkt('ledcube')">LED Cube Driver</li>
-      <li onclick="linkt('damic')">Dark Matter in CCDs Hardware</li>
-      <li onclick="linkt('desklamp')">Grow Light</li>
-      <li onclick="linkt('desklamp')">Off-Grid Potting Shed</li>
-      <li onclick="linkt('crazyflie')">Crazyflie Deployment Mechanism</li>
-      <li onclick="linkt('lccs')">Liquid Cooling Raspberry Pi</li>
-      <li onclick="linkt('misc')">Other/Random</li>
+      <li><a href="#quadii">Quad II Pick and Place Machine</a></li>
+      <li><a href="#simplesbc">STM32MP157 Single Board Computer</a></li>
+      <li><a href="#hfpa">MRF101 Solid State PA</a></li>
+      <li><a href="#xmradar">XM Radar PA Carousel</a></li>
+      <li><a href="#rflens">3D Printed Dielectric Lenses</a></li>
+      <li><a href="#drc">Design Review Checklist</a></li>
+      <li><a href="#mrr">Diagnostic MRR</a></li>
+      <li><a href="#interferometer">DSES Interferometer</a></li>
+      <li><a href="#aoa">Solid State AoA Sensor</a></li>
+      <li><a href="#wellmonitor">Well Monitor</a></li>
+      <li><a href="#gpr">Ground Penetrating Radar</a></li>
+      <li><a href="#polkadot">Polkadot Mesh Network</a></li>
+      <li><a href="#datalogger">Airplane Datalogger</a></li>
+      <li><a href="#radiosonde">Small Radiosonde</a></li>
+      <li><a href="#dds">DDS-AWG</a></li>
+      <li><a href="#radar">Radar Sounder Demo</a></li>
+      <li><a href="#devboard">Alternative Dev Board</a></li>
+      <li><a href="#vumeter">VU-Meter/Spectrum Visualizer</a></li>
+      <li><a href="#phat2">PHAT-2</a></li>
+      <li><a href="#burice">Buried Ice Detection</a></li>
+      <li><a href="#sousvide">Sous-vide Controller</a></li>
+      <li><a href="#powermon">Outlet Power Indicator</a></li>
+      <li><a href="#psu">Breadboard Split Rail PSU</a></li>
+      <li><a href="#epaper">STM32 E-Paper Clock</a></li>
+      <li><a href="#LEDSign">LED Matrix</a></li>
+      <li><a href="#sterilizer">UVC Mask Sterilizer</a></li>
+      <li><a href="#sprinkler">Sprinkler Controller</a></li>
+      <li><a href="#ledcube">LED Cube Driver</a></li>
+      <li><a href="#damic">Dark Matter in CCDs Hardware</a></li>
+      <li><a href="#desklamp">Grow Light</a></li>
+      <li><a href="#desklamp">Off-Grid Potting Shed</a></li>
+      <li><a href="#crazyflie">Crazyflie Deployment Mechanism</a></li>
+      <li><a href="#lccs">Liquid Cooling Raspberry Pi</a></li>
+      <li><a href="#misc">Other/Random</a></li>
     </ul>
   </div>
   <img class = "allimage" src="images/dses_sunset.jpg" alt="A photo of the sunset taken at the DSES" >
@@ -59,6 +60,48 @@
       undoubtedly lose at some point. Every image on this page is my own, and unless otherwise
       noted all PCBs are my own designs.
     </p>
+    <div id="quadii" class = "post">
+      <h2>Quad II Pick and Place Machine</h2>
+      <img src="images/quadii/quadii.jpg" alt="Quad II Pick and Place Machine">
+      <p>
+        In progress! I got a Quad II pick and place machine for a steal on EBay. These are professional machines, so the 
+        mechanical hardware is far better than most "benchtop" or hobbyist pick and place machines. Because this machine
+        was "new" in the '90s, it needs a new controller and vision system. I have been working with 
+        <a href="https://github.com/jamelofs">jamelofs</a> to port the STM32 port of RepRapFirmware to the STM32MP157 so
+        that the Cortex-M4 can be used for motion control and the Cortex-A7 can be used for vision:
+      </br>
+      </br>
+        <a href="https://github.com/jamelofs/RRFBuild">RRFBuild for STM32MP157</a>
+      </p>
+    </div>
+    <div id="simplesbc" class = "post">
+      <h2>STM32MP157 Linux Capable SBC - <a href="https://github.com/hansgaensbauer/SimpleSBC">Github Page</a></h2>
+      <img src="images/simplesbc/simplesbc_v0.jpg" alt="SimpleSBC V0">
+      <p>
+        3-27-2025: We are working on a new revision that adds ethernet and USB! This is a collaborative project with Tim Shepard
+        to develop a low cost STM32MP157 computer that can be used either as a standalone SBC or as a System-on-Module in other
+        projects.
+      </p>
+    </div>
+    <div id="hfpa" class = "post">
+      <h2>MRF101 HF Solid State PA - <a href="https://github.com/hansgaensbauer/LittleHF_PA">Github Page</a></h2>
+      <img src="images/hfpa/v0_withouttransformer.jpg" alt="A high frequency power amplifier using the MRF101">
+      <p>
+        This is a HF power amplifier using the MRF101AN RF LDMOS transistor. This was originally intended to be used
+        for an instrument at work, but it became quickly clear that we didn't need it. Not wanting to let all the 
+        reading I had done go to waste, I decided to build it anyway as a personal project. 
+      </p>
+    </div>
+    <div id="xmradar" class = "post">
+      <h2>XM Radar PA Carousel</h2>
+      <img src="images/xmradar/postinstall.jpg" alt="The finished carousel assembly.">
+      <p>
+        Because the RF slip ring used in the W1XM "Big Dish" antenna cannot handle legal limit RF power, the power amplifiers
+        for the XM radar need to rotate with the dish. To support them, <a href="https://github.com/featherfeet">featherfeet</a> 
+        and I constructed a heavy duty rotating carousel that sits underneath the structure for the dish within the radome 
+        out of scrap steel.  
+      </p>
+    </div>
     <div id="rflens" class = "post">
       <h2>3D Printed Dielectric Lenses</h2>
       <p>
