@@ -1,214 +1,63 @@
-/* stylesheet for hgaens.info*/
-iframe{
-  width:40vw;
-  min-height:20vw;
-  max-height:20vw;
-  overflow:scroll;
+body {
+    margin: 40px auto;
+    max-width: 650px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 10px 50px 10px 50px;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: #888;
+    margin: 5px;
+}
+
+.item {
+    margin-bottom: 0px;
+    margin-top: 0px;
+    padding:0;
+    font-size: 10pt;
+}
+
+.subtitle {
+    padding:0;
+    margin-top: 1px;
+    margin-bottom: 0px;
+    font-size: 8pt;
+}
+
+h3 a {
+    text-decoration: none;
+    color: black;
+}
+
+h2 {
+    margin-bottom: 8px;
+}
+
+img{
   display:block;
-  margin:auto;
-}
-
-.codediv{
-  margin-right:auto;
-  margin-left:auto;
-  margin-bottom:0;
-  padding-bottom:0vw;
-  width:40vw;
-  max-height:30vw;
-  overflow:scroll;
-}
-
-code{
-  margin-top:-1em;
-}
-
-pre{
-  display:inline-block;
-}
-
-#recentposts{
-  position:relative;
-  left:25vw;
-  padding:0vw 2vw;
-}
-
-#clicktostop{
-  position:absolute;
-  font-size:16pt;
-  top:18.5vw;
-  right:0vw;
-  width:8vw;
-}
-
-.ipost{
-  width:50vw;
-  position:relative;
-  left:25vw;
-  background-color:#f7faff;
-  padding:0vw 2vw;
-}
-
-.ipost p{
-  font-size:14pt;
-}
-
-.ipost img{
-  display:block;
-  width:30vw;
+  width:90%;
   margin-left:auto;
   margin-right:auto;
-  margin-top:1vw;
-  margin-bottom:1vw;
-}
-
-.post img{
-  display:block;
-  width:30vw;
-  margin-left:auto;
-  margin-right:auto;
-  margin-top:1vw;
-  margin-bottom:1vw;
-}
-
-.post video{
-  display:block;
-  width:30vw;
-  margin-left:auto;
-  margin-right:auto;
-  margin-top:1vw;
-  margin-bottom:1vw;
-}
-
-.content p{
-  font-size: 14pt;
-}
-
-.content ol{
-  font-size: 14pt;
-}
-
-.contents{
-  margin-top:0vw;
+  margin-top:10px;
   margin-bottom:10px;
 }
 
-.contentslist li {
-  color:black;
-  text-decoration:underline;
-}
-
-.allimage{
-  width:100%;
-  height:17vw;
-}
-
-#contentsdiv{
-  position:absolute;
-  top:23vw;
-  left:15vw;
-  background-color:#d1d3d6;
-  padding:1vw;
-  width:12vw;
-}
-
-.icontent{
-  width:50vw;
-  position:relative;
-  left:25vw;
-  background-color:#f7faff;
-  padding:0vw 2vw;
-}
-
-.icontent p{
-  font-size:16pt;
-}
-
-.content{
-  width:50vw;
-  position:relative;
-  left:30vw;
-  background-color:#f7faff;
-  padding:0vw 2vw;
-}
-
-.resources{
-  width:60vw;
-  position:relative;
-  left:20vw;
-  background-color:#f7faff;
-  padding:0vw 2vw;
-}
-
-.resources h1{
-  text-align:center;
-}
-
-.resources ul{
-  padding-left:4em;
-  margin-top:0px;
-}
-
-#menulist{
-  text-align:center;
-  display:table;
-  position:relative;
-  overflow:hidden;
-  width:60vw;
-  margin-right:5vw
-}
-
-#myCanvas{
-  width:auto;
-  border: 1px solid black;
-  padding:0px;
-}
-
-.menuitem{
+video{
   display:block;
-  list-style-type:none;
-  float:right;
-  padding:0vw 2vw;
-  font-size:16pt;
-  width:80px;
-  border-right:1px solid white;
-  text-align:center;
+  width:90%;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:10px;
+  margin-bottom:10px;
 }
 
-.menuitem a{
-  color:#92b6ef;
-  text-decoration:none;
+.homelink {
+    text-align: center;
 }
-
-#menu{
-  table-layout:auto;
-  z-index:2;
-  margin-top:0vw;
-  margin-left:0vw;
-  background-color:lightgray;
-  padding:0vw;
-  width:100%;
-}
-
-.hiddenlink{
-  text-decoration:none;
-  color:black;
-  width:100%;
-}
-
-#archive{
-  text-align: right;
-}
-
-.hiddenlink h1{
-  padding:0vw;
-  margin:0.5vw;
-}
-
-li .menuitem:hover {
-  background-color: #3567ba;
-}
-
-body{
-  margin:0vw;
-  padding:0vw;
+.homelink a{
+    color: black;
 }

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>LED Metro Sign</title>
+    <link rel="icon" href="favicon.png" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" type="text/css" href="styling.css" >
+</head>
+
+<body>
+    <h2>LED Matrix</h2>
+    <p>
+    Lessons learned in high speed PCB layout. To burn some time with a friend, I built a 16 by 160 LED
+    dot matrix from scratch with 2560 LEDs from LCSC (only $30!). This system is driven by a Raspberry Pi
+    running some <i>very</i> lazy code which seems to run fine. The characters are read out of a file
+    listing Shanghai metro stops, rendered in GNU Unifont, converted to numpy arrays and then shifted into
+    the matrix.
+
+    <video controls>
+        <source src="images/metrosign.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <img src="images/panel.png" alt="A rendering of each of the panels" >
+
+    Sadly, I do not have any photos of the panels after they were assembled. There were 16 panels and one
+    controller PCB that attached to one end and contained a power supply and the mosfets for controlling
+    the anodes.
+    </p>
+    <div class = "homelink"><a href="index.html">home</a></div>
+</body>
+
+</html>

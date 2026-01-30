@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PHAT-2</title>
+    <link rel="icon" href="favicon.png" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" type="text/css" href="styling.css" >
+</head>
+
+<body>
+    <h2>PHAT-2</h2>
+    <p>
+    The Platform for High Altitude Technology 2 (PHAT-2) was a balloon mission developed
+    by the Husky Satellite Lab, and it was the first project that I was assigned after joining
+    the club. Unfortunately, a number of factors meant that the structure and software aspects
+    of the balloon were never finished, but I was able to build and test all of the electronics.
+    The photos below show the cutdown detector, a langmuir probe controller, the power distribution
+    board, and the ADCS/IMU board.
+
+    <img src="images/cutdown.jpg" alt="The custom cutdown detector" >
+    <img src="images/langmuir.png" alt="The langmuir probe controller" >
+    <img src="images/phat2.jpg" alt="The cutdown PCB, PDB, and ADCS boards for phat2" >
+    <img src="images/charger.jpg" alt="The PHAT-2 charger PCB">
+    <img src="images/igniter.jpg" alt="The PHAT-2 igniter PCB">
+
+    The coolest part of the driver electronics is the Pulsed Plasma Thruster (PPT) charger and
+    igniter. The Advanced Propulsion Laboratory at the University of Washington had a design for
+    the charger and igniter circuits that required a 4 layer PCB, it required two separate high
+    voltage flyback converters and it would produce huge surges when it fired. These surges killed
+    the control electronics for PHAT-1, so I redesigned the charger to provide complete galvanic
+    isolation between the PPT and the electrical subsystem during firing. I was also able to
+    eliminate one of the flyback converters and use a 2 layer PCB. It could charge a 100uF bank of
+    capacitors to 800V in a few hundred milliseconds, and generate 26kV arcs for ignition.
+
+    <img src="images/spark.png" alt="A spark from the igniter circuitry" >
+
+    For this project, I also build a langmuir probe controller and frontend, a power distribution
+    board, and a very simple system for detecting when the flight was terminated by a nichrome wire
+    cutdown using a single limit switch.
+    </p>
+    <div class = "homelink"><a href="index.html">home</a></div>
+</body>
+
+</html>

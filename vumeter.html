@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>VU Meter</title>
+    <link rel="icon" href="favicon.png" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" type="text/css" href="styling.css" >
+</head>
+
+<body>
+    <h2>VU Meter/Spectrum Analyzer</h2>
+    <p>
+    An old friend of mine is a musician, so I made them an STM32 based VU Meter that would change
+    colors depending on the frequencies of the received sound. After sketching out an implementation
+    that used <i>a lot</i> of VCVS stages, I decided to use a digital implementation instead. A simple
+    microphone amplifier circuit feeds the raw sound signal to the ADC of an STM32F4, which DMAs a few
+    milliseconds worth of samples into a buffer and then uses the ARM CMSIS DSP library to take an FFT.
+    The brightness of the RGB leds around the PCB is set in real time by the coefficients from the FFT.
+    <img src="images/vumeter.jpg" alt="The Vu meter connected to the programmer" >
+    <img src="images/vumeter_light.jpg" alt="The VU meter while sound is playing" >
+    <video controls>
+        <source src="images/vumeter.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+    </video>
+    The VU Meter is powered by a Li-Ion coin cell mounted on the back, which is recharged using the USB-C
+    port on the bottom. The wires in the photo are for the ST-Link Programmer.
+    </p>
+    <div class = "homelink"><a href="index.html">home</a></div>
+</body>
+
+</html>

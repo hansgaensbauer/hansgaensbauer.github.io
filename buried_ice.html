@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Radar Ice Detection</title>
+    <link rel="icon" href="favicon.png" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" type="text/css" href="styling.css" >
+</head>
+
+<body>
+    <h2>Buried Ice Detection with CPR</h2>
+    <p>
+    The goal of this work was to develop a system that would allow future lunar landers to identify
+    buried ice deposits with landing radar. I designed, simulated, and built cpol antennas for the
+    915 MHz ISM band and then used 400lbs of Concrete and a lot of ice to test the ability of
+    the system to identify buried ice. Unfortunately, the sub wavelength roughness of the aggregate
+    in the concrete caused really high CPR and all kinds of false positives (I can detect ice when it's
+    not buried). At least I learned a lot about concrete.
+
+    <img src="images/limesdrsetup.jpg" alt="A system for CPR measurements with the LimeSDR" >
+    <img src="images/pattern_RHCP.jpg" alt="Simulated RHCP Emission patter for the spiral antennas" >
+    <img src="images/an1_swr.png" alt="SWR measurements for the antenna" >
+    SWR Measurements for the antennas, showing a good match at 915MHz despite being electrically small
+    <img src="images/burtarget.jpg" alt="A buried ice target in the test setup" >
+    <img src="images/targets.jpg" alt="The test targets for cpr detection" >
+
+    I also built a system for automating the CPR measurements using an RF switch controlled by the
+    FPGA GPIO pins on the LimeSDR. The baluns and the RF switch PCB are mine. Here are the (very inconclusive)
+    results:
+
+    <img src="images/cpr_results.png" alt="Results of CPR testing" >
+
+    Either the system was nonfunctional (although I did test every component and they performed as expected in
+    isolation) or the setup was flawed. Concrete is a poor lunar simulant and I was using a very small box with
+    unrealistically small targets in a very noisy environment.
+    </p>
+    <div class = "homelink"><a href="index.html">home</a></div>
+</body>
+
+</html>
