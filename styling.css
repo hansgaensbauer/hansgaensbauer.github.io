@@ -61,3 +61,14 @@ video{
 .homelink a{
     color: black;
 }
+
+.img-row {
+  display: flex;
+  gap: 1rem;
+  max-width: 100%;
+}
+
+.img-row img {
+  height: 300px;
+  width: auto;
+}
