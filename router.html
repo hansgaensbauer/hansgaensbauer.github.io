@@ -157,6 +157,34 @@
       src="images/router/luci_1.png"
       alt="The LuCI console showing the radio information for the wifi card."
     />
+
+    <h2>Installation</h2>
+    <p>With everything working, all it needed was a nice box and a solution for holding down the 
+      WiFi card that didn't involve tape. I made a little bracket to give me a mounting point for 
+      the card, and designed a rack-mount case which I ordered from SCS. 
+      </p>
+    <img
+      src="images/router/cardbracket.jpg"
+      alt="The WiFi card bolted to a custom bracket on the board."
+    />
+    <img
+      src="images/router/install.jpeg"
+      alt="The assembled router attached to the bottom of a shelf in a bookcase."
+    />
+    <p>
+      While I like the idea of having a server rack in my apartment, I don't actually have one, so I 
+      brought back the tape to attach the router to the underside of a shelf in a bookcase. The new case 
+      also has holes for two external antennas. Most of this 1U case is empty (the SBC takes up only part of
+      the right half). Eventually, I may put a switch in the left half, but since I don't have any wired 
+      devices on the network right now, that is a project for some other time. 
+    </p>
+
+    <h2>Home Assistant</h2>
+    <p>
+      With 4 cores and plenty of RAM, the system is more than up to the task of running Home Assistant as 
+      well as all the routing stuff. Home Assistant is installed in a Docker container on the router so I 
+      can have both OpenWRT and HA going without needing to keep two SBCs plugged in all the time. 
+    </p>
     <div class="homelink"><a href="index.html">home</a></div>
   </body>
 </html>
