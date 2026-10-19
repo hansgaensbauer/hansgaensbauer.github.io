@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Osh Park Impedance</title>
+    <link rel="icon" href="favicon.png" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" type="text/css" href="styling.css">
+</head>
+
+<body>
+    <h2>Impedance and Propagation Speed Measurements for Osh Park 6 Layer PCBs</h2>
+    <p>
+        Osh Park provides some impedance calculations for their 6 layer boards, but they do not include 40 ohm
+        characteristic impedance and they do not provide information about the propagation delay. Since KiCAD's
+        calculator can be unreliable for complex stackups, here are some TDR measurements of various
+        microstrips/striplines with
+        target characteristic impedances near 40 ohms.
+    </p>
+    <table>
+        <tr>
+            <th>Layer</th>
+            <th>Trace Width (mm)</th>
+            <th>KiCAD Calculated Impedance</th>
+            <th>Osh Park Provided Impedance</th>
+            <th>Measured Impedance</th>
+            <th>KiCAD Calculated Prop Delay (ps/cm)</th>
+            <th>Measured Prop Delay (ps/cm)</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>0.211</td>
+            <td>54.0</td>
+            <td>50</td>
+            <td>50.6</td>
+            <td>50.57</td>
+            <td>55.19</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>0.290</td>
+            <td>44.9</td>
+            <td>-</td>
+            <td>44.5</td>
+            <td>51.61</td>
+            <td>55.19</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>0.343</td>
+            <td>40.4</td>
+            <td>-</td>
+            <td>38.6</td>
+            <td>52.16</td>
+            <td>53.18</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>0.228</td>
+            <td>44.4</td>
+            <td>-</td>
+            <td>41.4</td>
+            <td>63.98</td>
+            <td>62.80</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>0.279</td>
+            <td>39.3</td>
+            <td>-</td>
+            <td>38.8</td>
+            <td>63.98</td>
+            <td>60.89</td>
+        </tr>
+        </tr>
+    </table>
+    <p>
+        These measurements were made on a test coupon with different trace widths on the top and inner layers. There are
+        two traces of each width to improve the accuracy of the propagation speed measurement. One of the advantages of
+        TDR is that it is not necessary to de-embed the microstrip or use expensive connectors.
+    </p>
+    <img src="images/impedance/test_coupon.JPG" alt="Impedance test coupon board.">
+    <img src="images/impedance/tdr.JPG" alt="Impedance test coupon board.">
+    <div class="homelink"><a href="index.html">home</a></div>
+</body>
+
+</html>
